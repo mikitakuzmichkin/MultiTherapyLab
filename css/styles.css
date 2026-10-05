@@ -212,40 +212,32 @@ h2,
 
 .hero .brand-title {
   max-width: 12em;
+  margin-bottom: 18px;
   padding-top: 0;
   font-family: var(--sans);
-  font-size: clamp(46px, 6.1vw, 86px);
+  font-size: clamp(32px, 3.6vw, 52px);
   font-weight: 800;
   letter-spacing: -0.055em;
-  line-height: 0.92;
+  line-height: 0.95;
 }
 
 .hero .brand-title span {
   color: var(--gold-2);
 }
 
-.hero-photo {
+.hero-statement {
   position: absolute;
   z-index: 2;
-  left: 4%;
-  top: clamp(168px, 22vh, 240px);
-  width: min(460px, 40vw);
+  left: 0;
+  top: clamp(150px, 22vh, 230px);
+  width: min(520px, 46vw);
   margin: 0;
-}
-
-.hero-photo img {
-  width: 100%;
-  height: min(340px, 38vh);
-  object-fit: cover;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
-}
-
-.hero-photo::after {
-  content: "";
-  position: absolute;
-  inset: 16px -16px -16px 16px;
-  border: 1px solid rgba(215, 181, 109, 0.75);
-  pointer-events: none;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(28px, 2.7vw, 42px);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
 }
 
 .hero-copy {
@@ -254,13 +246,6 @@ h2,
   right: 0;
   top: clamp(88px, 11vh, 120px);
   width: min(500px, 44vw);
-}
-
-.hero-intro {
-  margin: 0 0 14px;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.45;
 }
 
 .spread-hint {
@@ -1158,18 +1143,18 @@ form.hidden {
     min-height: 0;
   }
 
+  .hero-statement {
+    position: static;
+    width: auto;
+    margin: 8px 0 8px;
+    font-size: clamp(26px, 6.4vw, 34px);
+  }
+
   .hero-copy {
     position: static;
     top: auto;
     width: auto;
-    margin-top: 18px;
-  }
-
-  .hero-photo {
-    position: relative;
-    top: auto;
-    width: 100%;
-    margin-top: 28px;
+    margin-top: 22px;
   }
 
   .spread {
@@ -1187,14 +1172,6 @@ form.hidden {
 
   .card-line {
     font-size: 11px;
-  }
-
-  .hero-photo img {
-    height: 240px;
-  }
-
-  .hero-photo::after {
-    inset: 8px;
   }
 
   .about-grid,
@@ -1230,7 +1207,7 @@ form.hidden {
   }
 
   .hero .brand-title {
-    font-size: 42px;
+    font-size: 32px;
   }
 
   .wordmark {
