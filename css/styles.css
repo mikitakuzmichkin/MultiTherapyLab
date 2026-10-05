@@ -228,7 +228,7 @@ h2,
   position: absolute;
   z-index: 2;
   left: 4%;
-  top: 34%;
+  top: clamp(168px, 22vh, 240px);
   width: min(460px, 40vw);
   margin: 0;
 }
@@ -252,8 +252,15 @@ h2,
   position: absolute;
   z-index: 3;
   right: 0;
-  top: 38%;
-  width: min(430px, 38vw);
+  top: clamp(88px, 11vh, 120px);
+  width: min(500px, 44vw);
+}
+
+.hero-intro {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.45;
 }
 
 .spread-hint {
@@ -268,12 +275,12 @@ h2,
 .spread {
   display: flex;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .card {
   width: 118px;
-  height: 186px;
+  height: 164px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -397,9 +404,8 @@ h2,
   line-height: 0.85;
 }
 
-.hero-lead {
-  margin: 14px 0 22px;
-  color: var(--muted);
+.hero-copy .btn {
+  margin-top: 4px;
 }
 
 .nav {
@@ -1152,15 +1158,17 @@ form.hidden {
     min-height: 0;
   }
 
-  .hero-photo {
-    position: relative;
-    width: 100%;
-    margin-top: 22px;
-  }
-
   .hero-copy {
     position: static;
+    top: auto;
     width: auto;
+    margin-top: 18px;
+  }
+
+  .hero-photo {
+    position: relative;
+    top: auto;
+    width: 100%;
     margin-top: 28px;
   }
 
