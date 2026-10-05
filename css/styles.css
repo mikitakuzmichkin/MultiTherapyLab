@@ -127,6 +127,9 @@ blockquote {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--ink);
   font-size: 18px;
   font-weight: 800;
@@ -134,6 +137,17 @@ blockquote {
   line-height: 1;
   text-decoration: none;
   text-transform: none;
+}
+
+.logo svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  color: var(--gold-2);
+}
+
+.logo span {
+  color: var(--gold-2);
 }
 
 .slogan {
@@ -176,13 +190,24 @@ blockquote {
 
 .hero-stage {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  grid-template-areas:
+    "kicker kicker"
+    "title cards"
+    "photo cards"
+    "nav nav";
+  column-gap: 56px;
+  row-gap: 22px;
+  align-items: start;
   width: min(1240px, calc(100% - 48px));
   min-height: calc(100svh - var(--header) - 36px);
   margin-inline: auto;
 }
 
 .hero-kicker {
-  margin-bottom: 8px;
+  grid-area: kicker;
+  margin-bottom: 0;
   color: var(--gold);
   font-size: 12px;
   font-weight: 700;
@@ -211,41 +236,51 @@ h2,
 }
 
 .hero .brand-title {
-  max-width: 12em;
-  margin-bottom: 18px;
+  grid-area: title;
+  max-width: 16em;
+  margin: 0;
   padding-top: 0;
   font-family: var(--sans);
-  font-size: clamp(32px, 3.6vw, 52px);
+  font-size: clamp(28px, 2.7vw, 40px);
   font-weight: 800;
-  letter-spacing: -0.055em;
-  line-height: 0.95;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
 }
 
 .hero .brand-title span {
   color: var(--gold-2);
 }
 
-.hero-statement {
-  position: absolute;
+.hero-photo {
+  grid-area: photo;
+  position: relative;
   z-index: 2;
-  left: 0;
-  top: clamp(150px, 22vh, 230px);
-  width: min(520px, 46vw);
-  margin: 0;
-  color: var(--ink);
-  font-family: var(--serif);
-  font-size: clamp(28px, 2.7vw, 42px);
-  font-weight: 500;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
+  width: min(460px, 100%);
+  margin: 8px 0 28px;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: min(340px, 38vh);
+  object-fit: cover;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border: 1px solid rgba(215, 181, 109, 0.75);
+  pointer-events: none;
 }
 
 .hero-copy {
-  position: absolute;
+  grid-area: cards;
+  position: relative;
   z-index: 3;
-  right: 0;
-  top: clamp(88px, 11vh, 120px);
-  width: min(500px, 44vw);
+  align-self: center;
+  justify-self: end;
+  width: min(420px, 100%);
 }
 
 .spread-hint {
@@ -260,7 +295,19 @@ h2,
 .spread {
   display: flex;
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.hero-note {
+  margin: 0 0 18px;
+  color: rgba(244, 239, 230, 0.92);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.hero-note span {
+  color: var(--gold-2);
+  font-weight: 700;
 }
 
 .card {
@@ -394,12 +441,12 @@ h2,
 }
 
 .nav {
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  grid-area: nav;
+  align-self: end;
   z-index: 3;
   display: flex;
   gap: 28px;
+  margin-top: 12px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -1140,21 +1187,35 @@ form.hidden {
   }
 
   .hero-stage {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "kicker"
+      "title"
+      "photo"
+      "cards"
+      "nav";
     min-height: 0;
+    row-gap: 18px;
   }
 
-  .hero-statement {
-    position: static;
-    width: auto;
-    margin: 8px 0 8px;
-    font-size: clamp(26px, 6.4vw, 34px);
+  .hero .brand-title {
+    max-width: none;
+    font-size: clamp(24px, 6.2vw, 32px);
   }
 
   .hero-copy {
-    position: static;
-    top: auto;
+    justify-self: start;
     width: auto;
-    margin-top: 22px;
+    margin-top: 4px;
+  }
+
+  .hero-photo {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .hero-photo::after {
+    inset: 8px;
   }
 
   .spread {
@@ -1207,7 +1268,7 @@ form.hidden {
   }
 
   .hero .brand-title {
-    font-size: 32px;
+    font-size: 22px;
   }
 
   .wordmark {
